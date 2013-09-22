@@ -38,7 +38,7 @@ public class Tile {
 
     enum Route { TOP, RIGHT, DOWN, LEFT }
 
-    private HashMap<Route, Boolean> routes;
+    private HashMap<Route, Boolean> routes = new HashMap<Route, Boolean>();
     private Route trainFrom;
     private Route routeDecision;
     private int progress = -1; //if progress is negative, the train hasn't arrived yet; otherwise a percentage

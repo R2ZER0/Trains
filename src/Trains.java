@@ -47,7 +47,7 @@ public class Trains extends BasicGame {
     public void update(GameContainer container, int delta) throws SlickException {
         currentTile.setProgress(currentTile.getProgress() + speed);
         if(currentTile.getProgress() == 100) { // go to next tile
-            Tile.Route route = if()
+            //Tile.Route route = if()
         }
     }
 
