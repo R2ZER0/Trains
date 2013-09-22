@@ -1,10 +1,13 @@
 <component name="libraryTable">
-  <library name="lib">
+  <library name="slick2d">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/slick2d/lib/lwjgl_util.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/slick2d/lib/jinput.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/slick2d/lib/slick.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/slick2d/lib/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slick2d/lib/ibxm.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slick2d/lib/jogg-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slick2d/lib/jorbis-0.0.15.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="file://$PROJECT_DIR$/lib/slick2d/javadoc" />
