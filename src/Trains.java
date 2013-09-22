@@ -16,7 +16,7 @@ public class Trains extends BasicGame {
         try {
             AppGameContainer appgc;
             appgc = new AppGameContainer(new Trains("Simple Slick Game"));
-            appgc.setDisplayMode(640, 480, false);
+            appgc.setDisplayMode(600, 500, false);
             appgc.start();
         } catch(SlickException e) {
             Logger.getLogger(Trains.class.getName()).log(Level.SEVERE, null, e);

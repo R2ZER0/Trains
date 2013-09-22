@@ -1,5 +1,6 @@
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.util.HashMap;
@@ -13,8 +14,15 @@ import java.util.Random;
  */
 public class Tile {
 
+    private Image base;
+
     public Tile() {
         this(random.nextBoolean(), random.nextBoolean(), random.nextBoolean(), random.nextBoolean());
+        try {
+            base = new Image("src/Resources/Base.png");
+        } catch(SlickException e) {
+            // do nothing
+        }
     }
 
     private static Random random = new Random();
@@ -71,7 +79,8 @@ public class Tile {
 
     // TODO a public render method
     public void render(GameContainer container, Graphics g, int x, int y) throws SlickException {
-
+        base.draw(x,y);
+        //draw tracks
     }
 
 }
