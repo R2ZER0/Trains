@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Trains.iml" filepath="$PROJECT_DIR$/Trains.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/slick2d/slick2d.iml" filepath="$PROJECT_DIR$/lib/slick2d/slick2d.iml" />
     </modules>
   </component>
 </project>
