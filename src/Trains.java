@@ -71,6 +71,23 @@ public class Trains extends BasicGame {
             } else {
                 // TODO - when the train goes off the edge, and they lose (or win maybe... what even is the objective?)
             }
+            Input input = container.getInput();
+            if (input.isKeyPressed(Input.KEY_W) || input.isKeyPressed(Input.KEY_UP)) {
+                currentTile.setRouteDecision(Tile.Route.TOP);
+                gui.setDirection(1);
+            }
+            else if (input.isKeyPressed(Input.KEY_D) || input.isKeyPressed(Input.KEY_RIGHT)) {
+                currentTile.setRouteDecision(Tile.Route.RIGHT);
+                gui.setDirection(2);
+            }
+            else if (input.isKeyPressed(Input.KEY_S) || input.isKeyPressed(Input.KEY_DOWN)) {
+                currentTile.setRouteDecision(Tile.Route.DOWN);
+                gui.setDirection(3);
+            }
+            else if (input.isKeyPressed(Input.KEY_A) || input.isKeyPressed(Input.KEY_LEFT)) {
+                currentTile.setRouteDecision(Tile.Route.LEFT);
+                gui.setDirection(4);
+            }
         }
     }
 
