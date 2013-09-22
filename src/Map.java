@@ -20,6 +20,7 @@ public class Map {
         for (int i = 0; i < sideSize*sideSize; i++) {
             tiles[i] = new Tile();
         }
+        tiles[0] = new Tile(true, true, true, true);
     }
 
     public boolean coordsInBounds(int x, int y) {

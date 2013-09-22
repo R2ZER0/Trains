@@ -37,22 +37,25 @@ public class Trains extends BasicGame {
         curx = 0;
         cury = 0;
         currentTile = map.getTile(curx, cury);
+        currentTile.trainArrives(Tile.Route.TOP);
+        currentTile.setRouteDecision(Tile.Route.RIGHT);
+        currentTile.setProgress(50);
     }
 
     private Tile currentTile;
     private int curx, cury;
-    private int speed = 5;
+    private int speed = 1;
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
         currentTile.setProgress(currentTile.getProgress() + speed);
-        if(currentTile.getProgress() == 100) { // go to next tile
+        if(currentTile.getProgress() <= 99) { // go to next tile
             Tile.Route route = currentTile.getRouteDecision();
             switch (route) {
-                case DOWN: cury++;
-                case TOP: cury--;
-                case RIGHT: curx++;
-                case LEFT: curx--;
+                case DOWN: cury++; break;
+                case TOP: cury--;  break;
+                case RIGHT: curx++; break;
+                case LEFT: curx--; break;
             }
 
             //make sure it's in bounds
