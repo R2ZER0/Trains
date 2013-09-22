@@ -14,27 +14,25 @@ import org.newdawn.slick.SlickException;
 
 public class GUI {
 
-    private static int direction;
-    static Image[] arrow;
+    private int direction;
+    Image[] arrow;
     int size;
 
     public GUI (Map map) {
         size = map.GetSize();
-    }
-
-    static {
         try {
-        direction = 0;
-        arrow = new Image[5];
-        arrow[0] = new Image("src/Resources/D0_Centre.png");
-        arrow[1] = new Image("src/Resources/D1_Up.png");
-        arrow[2] = new Image("src/Resources/D2_Right.png");
-        arrow[3] = new Image("src/Resources/D3_Down.png");
-        arrow[4] = new Image("src/Resources/D4_Left.png");
+            direction = 0;
+            arrow = new Image[5];
+            arrow[0] = new Image("src/Resources/D0_Centre.png");
+            arrow[1] = new Image("src/Resources/D1_Up.png");
+            arrow[2] = new Image("src/Resources/D2_Right.png");
+            arrow[3] = new Image("src/Resources/D3_Down.png");
+            arrow[4] = new Image("src/Resources/D4_Left.png");
         } catch(SlickException e) {
             // do nothing
         }
     }
+
     //set to 0 after changing tile, set when press direction
     public void setDirection(int d){
         direction = d;

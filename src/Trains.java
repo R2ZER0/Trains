@@ -1,4 +1,6 @@
 import org.newdawn.slick.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,17 +12,19 @@ public class Trains extends BasicGame {
 
     public static void main(String[] args) {
         // make a new game thing!
-        Trains trains = new Trains("Trains"); // Trains!
-    try {
-        AppGameContainer agc = new AppGameContainer(trains);
-        agc.setDisplayMode(800, 600, false);
-        agc.start();
-    } catch(SlickException e) {}
-
+        ///Trains trains = ; // Trains!
+        try {
+            AppGameContainer appgc;
+            appgc = new AppGameContainer(new Trains("Simple Slick Game"));
+            appgc.setDisplayMode(640, 480, false);
+            appgc.start();
+        } catch(SlickException e) {
+            Logger.getLogger(Trains.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
-    Map map = new Map(5);
-    GUI gui = new GUI(map);
+    Map map;
+    GUI gui;
 
     public Trains(String title) {
         super(title);
@@ -28,7 +32,8 @@ public class Trains extends BasicGame {
 
     @Override
     public void init(GameContainer container) throws SlickException {
-
+        map = new Map(5);
+        gui = new GUI(map);
     }
 
     private Tile currentTile;
