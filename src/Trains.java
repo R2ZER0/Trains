@@ -26,9 +26,12 @@ public class Trains extends BasicGame {
 
     }
 
+    private Tile currentTile;
+    private int speed = 5;
+
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
-        //To change body of implemented methods use File | Settings | File Templates.
+        currentTile.setProgress(currentTile.getProgress() + speed);
     }
 
     @Override
