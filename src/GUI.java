@@ -39,7 +39,7 @@ public class GUI {
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-        arrow[direction].draw((size+1)*100, (size)*100);
+        arrow[direction].draw((size)*100, (size-1)*100);
     }
 
 }

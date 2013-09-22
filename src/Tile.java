@@ -81,7 +81,23 @@ public class Tile {
 
     // TODO a public render method
     public void render(GameContainer container, Graphics g, int x, int y) throws SlickException {
-        base.draw(x,y);
+        base.draw(x*100,y*100);
+        if (routes.get(Route.TOP)) {
+            track.setRotation(0);
+            track.draw(x*100+45,y*100);
+        }
+        if (routes.get(Route.RIGHT)) {
+            track.setRotation(90);
+            track.draw(x*100+72,y*100+27);
+        }
+        if (routes.get(Route.DOWN)) {
+            track.setRotation(0);
+            track.draw(x*100+45,y*100+54);
+        }
+        if (routes.get(Route.LEFT)) {
+            track.setRotation(90);
+            track.draw(x*100+18,y*100+27);
+        }
         //draw tracks
     }
 
