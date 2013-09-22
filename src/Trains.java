@@ -11,6 +11,11 @@ public class Trains extends BasicGame {
     public static void main(String[] args) {
         // make a new game thing!
         Trains trains = new Trains("Trains"); // Trains!
+    try {
+        AppGameContainer agc = new AppGameContainer(trains);
+        agc.setDisplayMode(800, 600, false);
+        agc.start();
+    } catch(SlickException e) {}
 
     }
 
