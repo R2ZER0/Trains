@@ -34,14 +34,21 @@ public class Trains extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         map = new Map(5);
         gui = new GUI(map);
+        curx = 0;
+        cury = 0;
+        currentTile = map.getTile(curx, cury);
     }
 
     private Tile currentTile;
+    private int curx, cury;
     private int speed = 5;
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
         currentTile.setProgress(currentTile.getProgress() + speed);
+        if(currentTile.getProgress() == 100) { // go to next tile
+            Tile.Route route = if()
+        }
     }
 
     @Override
