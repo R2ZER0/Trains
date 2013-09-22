@@ -11,7 +11,12 @@ import org.newdawn.slick.SlickException;
  */
 public class Trains extends BasicGame {
 
+    public static void main(String[] args) {
+        // make a new game thing!
+        Trains trains = new Trains("Trains"); // Trains!
+    }
 
+    Map map = new Map(5);
 
     public Trains(String title) {
         super(title);

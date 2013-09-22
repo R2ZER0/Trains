@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e5d36ad-a404-4605-86c8-d2aec7366cd4" name="Default" comment="" />
+    <list default="true" id="4e5d36ad-a404-4605-86c8-d2aec7366cd4" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Trains.java" afterPath="$PROJECT_DIR$/src/Trains.java" />
+    </list>
     <ignored path="Trains.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Trains.java" changelist="4e5d36ad-a404-4605-86c8-d2aec7366cd4" time="1379810820666" ignored="false" />
+    <file path="/Trains.java" changelist="4e5d36ad-a404-4605-86c8-d2aec7366cd4" time="1379812090097" ignored="false" />
     <file path="/BaseTile.java" changelist="4e5d36ad-a404-4605-86c8-d2aec7366cd4" time="1379811790287" ignored="false" />
     <file path="/Tile.java" changelist="4e5d36ad-a404-4605-86c8-d2aec7366cd4" time="1379810581346" ignored="false" />
     <file path="/Map.java" changelist="4e5d36ad-a404-4605-86c8-d2aec7366cd4" time="1379811252275" ignored="false" />
@@ -69,10 +71,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Trains.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Trains.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Trains.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0">
+            <state line="16" column="56" selection-start="422" selection-end="422" vertical-scroll-proportion="0.3119266">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,10 +91,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tile.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Tile.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="34" selection-start="1579" selection-end="1579" vertical-scroll-proportion="0.8635321">
+            <state line="24" column="71" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -118,9 +120,9 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/BaseTile.java" />
-        <option value="$PROJECT_DIR$/src/Trains.java" />
         <option value="$PROJECT_DIR$/src/Map.java" />
         <option value="$PROJECT_DIR$/src/Tile.java" />
+        <option value="$PROJECT_DIR$/src/Trains.java" />
       </list>
     </option>
   </component>
@@ -421,15 +423,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Trains.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="43" selection-start="431" selection-end="431" vertical-scroll-proportion="0.0">
@@ -439,8 +432,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="34" selection-start="1579" selection-end="1579" vertical-scroll-proportion="0.8635321">
+        <state line="24" column="71" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Trains.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="56" selection-start="422" selection-end="422" vertical-scroll-proportion="0.3119266">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
