@@ -44,6 +44,7 @@ public class Tile {
     private int progress = -1; //if progress is negative, the train hasn't arrived yet; otherwise a percentage
 
     public void setRouteDecision(Route decision) {
+        if(progress >= 50) return;
         if(routes.get(decision) && (decision != trainFrom)) {
             this.routeDecision = decision;
         }
