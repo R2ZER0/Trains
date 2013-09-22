@@ -15,7 +15,7 @@ public class Trains extends BasicGame {
         ///Trains trains = ; // Trains!
         try {
             AppGameContainer appgc;
-            appgc = new AppGameContainer(new Trains("Simple Slick Game"));
+            appgc = new AppGameContainer(new Trains("Trains"));
             appgc.setDisplayMode(600, 500, false);
             appgc.start();
         } catch(SlickException e) {
