@@ -15,11 +15,13 @@ import java.util.Random;
 public class Tile {
 
     private Image base;
+    private Image track;
 
     public Tile() {
         this(random.nextBoolean(), random.nextBoolean(), random.nextBoolean(), random.nextBoolean());
         try {
             base = new Image("src/Resources/Base.png");
+            track = new Image("src/Resources/Track.png");
         } catch(SlickException e) {
             // do nothing
         }
