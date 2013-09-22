@@ -1,7 +1,4 @@
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +15,7 @@ public class Trains extends BasicGame {
     }
 
     Map map = new Map(5);
+    GUI gui = new GUI(map);
 
     public Trains(String title) {
         super(title);
@@ -25,7 +23,7 @@ public class Trains extends BasicGame {
 
     @Override
     public void init(GameContainer container) throws SlickException {
-        //To change body of implemented methods use File | Settings | File Templates.
+
     }
 
     @Override
@@ -36,5 +34,6 @@ public class Trains extends BasicGame {
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {
         map.render(container, g);
+        gui.render(container, g);
     }
 }

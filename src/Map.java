@@ -22,6 +22,10 @@ public class Map {
     private Tile[] tiles;
     private final int sideSize;
 
+    public int GetSize() {
+        return sideSize;
+    }
+
     public Tile getTile(int x, int y) {
         return this.tiles[y* sideSize + x];
     }
