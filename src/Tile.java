@@ -40,7 +40,7 @@ public class Tile {
 
     private HashMap<Route, Boolean> routes = new HashMap<Route, Boolean>();
     private Route trainFrom;
-    private Route routeDecision;
+    private Route routeDecision = Route.TOP;
     private int progress = -1; //if progress is negative, the train hasn't arrived yet; otherwise a percentage
 
     public void setRouteDecision(Route decision) {

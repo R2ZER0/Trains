@@ -22,6 +22,10 @@ public class Map {
         }
     }
 
+    public boolean coordsInBounds(int x, int y) {
+        return (x >= 0 && x < sideSize) && (y >= 0 && y < sideSize);
+    }
+
     private Tile[] tiles;
     private final int sideSize;
 

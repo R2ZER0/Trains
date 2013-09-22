@@ -47,7 +47,30 @@ public class Trains extends BasicGame {
     public void update(GameContainer container, int delta) throws SlickException {
         currentTile.setProgress(currentTile.getProgress() + speed);
         if(currentTile.getProgress() == 100) { // go to next tile
-            //Tile.Route route = if()
+            Tile.Route route = currentTile.getRouteDecision();
+            switch (route) {
+                case DOWN: cury++;
+                case TOP: cury--;
+                case RIGHT: curx++;
+                case LEFT: curx--;
+            }
+
+            //make sure it's in bounds
+            if(map.coordsInBounds(curx, cury)) {
+                // when they get to a new tile
+                currentTile = map.getTile(curx, cury);
+                Tile.Route oppRoute = Tile.Route.TOP;
+                switch (route) {
+                    case DOWN: oppRoute = Tile.Route.TOP; break;
+                    case TOP: oppRoute = Tile.Route.DOWN; break;
+                    case RIGHT: oppRoute = Tile.Route.LEFT; break;
+                    case LEFT: oppRoute = Tile.Route.RIGHT; break;
+                }
+                currentTile.trainArrives(oppRoute);
+                currentTile.setRouteDecision(oppRoute);
+            } else {
+                // TODO - when the train goes off the edge, and they lose (or win maybe... what even is the objective?)
+            }
         }
     }
 
