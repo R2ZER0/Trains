@@ -14,6 +14,7 @@ public class Trains extends BasicGame {
     public static void main(String[] args) {
         // make a new game thing!
         Trains trains = new Trains("Trains"); // Trains!
+
     }
 
     Map map = new Map(5);
@@ -34,6 +35,6 @@ public class Trains extends BasicGame {
 
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {
-        //To change body of implemented methods use File | Settings | File Templates.
+        map.render(container, g);
     }
 }

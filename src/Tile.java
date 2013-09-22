@@ -1,4 +1,9 @@
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,9 +14,10 @@ import java.util.HashMap;
 public class Tile {
 
     public Tile() {
-        //TODO generate random valid tile
-        this(true, false, true, false);
+        this(random.nextBoolean(), random.nextBoolean(), random.nextBoolean(), random.nextBoolean());
     }
+
+    private static Random random = new Random();
 
     public Tile(boolean top, boolean right, boolean down, boolean left) {
         routes.put(Route.TOP, top);
@@ -26,6 +32,14 @@ public class Tile {
     private Route trainFrom;
     private Route routeDecision;
     private int progress = -1; //if progress is negative, the train hasn't arrived yet; otherwise a percentage
+
+    public void setRouteDecision(Route decision) {
+        if(routes.get(decision) && (decision != trainFrom)) {
+            this.routeDecision = decision;
+        }
+    }
+
+    public Route getRouteDecision() { return this.routeDecision; }
 
     public void trainArrives(Route from) {
         this.progress = 0;
@@ -56,5 +70,8 @@ public class Tile {
     }
 
     // TODO a public render method
+    public void render(GameContainer container, Graphics g, int x, int y) throws SlickException {
+
+    }
 
 }

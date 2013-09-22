@@ -1,3 +1,7 @@
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Rikki
@@ -18,7 +22,15 @@ public class Map {
     private Tile[] tiles;
     private final int sideSize;
 
-    public Tile getTile(int x, int y) throws Exception {
+    public Tile getTile(int x, int y) {
         return this.tiles[y* sideSize + x];
+    }
+
+    public void render(GameContainer container, Graphics g) throws SlickException {
+         for(int y = 0; y < sideSize; ++y) {
+             for(int x = 0; x < sideSize; ++x) {
+                 this.getTile(x, y).render(container, g, x, y);
+             }
+         }
     }
 }
