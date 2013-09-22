@@ -26,11 +26,11 @@ public class GUI {
         try {
         direction = 0;
         arrow = new Image[5];
-        arrow[0] = new Image("/src/Resources/D0_Centre.png");
-        arrow[1] = new Image("/src/Resources/D1_Up.png");
-        arrow[2] = new Image("/src/Resources/D2_Right.png");
-        arrow[3] = new Image("/src/Resources/D3_Down.png");
-        arrow[4] = new Image("/src/Resources/D4_Left.png");
+        arrow[0] = new Image("src/Resources/D0_Centre.png");
+        arrow[1] = new Image("src/Resources/D1_Up.png");
+        arrow[2] = new Image("src/Resources/D2_Right.png");
+        arrow[3] = new Image("src/Resources/D3_Down.png");
+        arrow[4] = new Image("src/Resources/D4_Left.png");
         } catch(SlickException e) {
             // do nothing
         }
