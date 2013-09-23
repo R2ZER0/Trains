@@ -51,14 +51,14 @@ public class Tile {
         }
     }
 
-    public Route getRouteDecision() { return this.routeDecision; }
+    public Route getRouteDecision() {return this.routeDecision;}
 
     public void trainArrives(Route from) {
         this.progress = 0;
         this.trainFrom = from;
     }
 
-    public Route getTrainFrom() { return trainFrom;}
+    public Route getTrainFrom() {return trainFrom;}
 
     public HashMap<Route, Boolean> getRoutes() {return routes;}
 
@@ -69,13 +69,13 @@ public class Tile {
     }
 
     public void setProgress(int newProgress) {
-        if(newProgress > this.getProgress())
+        if(newProgress > this.getProgress() || newProgress == -1)
             this.progress = newProgress;
     }
 
     private boolean canRotate() { return progress<0; }
 
-    public void rotate() {
+    public void rotateRight() {
         if(this.canRotate()) {
             Boolean newTop = routes.get(Route.LEFT);
             routes.put(Route.LEFT, routes.get(Route.DOWN));
@@ -84,7 +84,16 @@ public class Tile {
             routes.put(Route.TOP, newTop);
         }
     }
-    //TODO reset progress after train leaves to allow rotation
+
+    public void rotateLeft() {
+        if(this.canRotate()) {
+            Boolean newTop = routes.get(Route.RIGHT);
+            routes.put(Route.RIGHT, routes.get(Route.DOWN));
+            routes.put(Route.DOWN, routes.get(Route.LEFT));
+            routes.put(Route.LEFT, routes.get(Route.TOP));
+            routes.put(Route.TOP, newTop);
+        }
+    }
 
     public void render(GameContainer container, Graphics g, int x, int y) throws SlickException {
         if(base != null) base.draw(x*100,y*100);

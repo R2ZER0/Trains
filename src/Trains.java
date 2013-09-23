@@ -60,6 +60,8 @@ public class Trains extends BasicGame {
             alive = false;
         }
         if(currentTile.getProgress() > 99) { // go to next tile
+            //reset old tile's progress
+            currentTile.setProgress(-1);
             Tile.Route route = currentTile.getRouteDecision();
             switch (route) {
                 case DOWN: cury++; break;
@@ -105,9 +107,19 @@ public class Trains extends BasicGame {
             }
         }
         if (input.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
-            map.getTile(input.getMouseX()/100, input.getMouseY()/100).rotate();
+            //if player is dead (restart button)
+            if (!alive && input.getMouseX() > 380 && input.getMouseX() < 580 && input.getMouseY() > 430 && input.getMouseY() < 480) {
+                container.reinit();
+            }
+            //if player is alive (spinning)
+            else if (input.getMouseX() < 500 && input.getMouseY() < 500) {
+                map.getTile(input.getMouseX()/100, input.getMouseY()/100).rotateLeft();
+            }
+
         }
-        //TODO rotate left or right w. mouse buttons
+        else if (input.isMousePressed(Input.MOUSE_RIGHT_BUTTON) && input.getMouseX() < 500 && input.getMouseY() < 500) {
+            map.getTile(input.getMouseX()/100, input.getMouseY()/100).rotateRight();
+        }
     }
 
     private static Random random = new Random();
@@ -124,6 +136,9 @@ public class Trains extends BasicGame {
         }
         else {
             g.drawString("What a loser", 200, 240);
+            g.setColor(Color.red);
+            g.drawRect(380, 430, 200, 50);
+            g.drawString("Try Again Pussy", 400, 445);
         }
     }
 }

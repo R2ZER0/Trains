@@ -34,7 +34,7 @@ public class GUI {
             // do nothing
         }
 
-        starttime = new Date().getTime();
+        startTime = new Date().getTime();
     }
 
     //set to 0 after changing tile, set when press direction
@@ -42,13 +42,13 @@ public class GUI {
         direction = d;
     }
 
-    long starttime;
+    long startTime;
 
     public void render(GameContainer container, Graphics g) throws SlickException {
         arrow[direction].draw((size)*100, (size-1)*100);
 
-        long timediff = (new Date().getTime() - starttime) / 1000;
-        g.drawString("" + Long.toString(timediff) + "s", 550, 0);
+        long timeDiff = (new Date().getTime() - startTime) / 1000;
+        g.drawString("" + Long.toString(timeDiff) + "s", 550, 0);
     }
 
 }
