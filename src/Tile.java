@@ -19,17 +19,9 @@ public class Tile {
     private Image train;
 
     public Tile() {
-        this(random.nextBoolean(), random.nextBoolean(), random.nextBoolean(), random.nextBoolean());
-        try {
-            base = new Image("src/Resources/Base.png");
-            track = new Image("src/Resources/Track.png");
-            train = new Image("src/Resources/Train.png");
-        } catch(SlickException e) {
-            e.printStackTrace();
-        }
+        this(Trains.balancer(100), Trains.balancer(100), Trains.balancer(100), Trains.balancer(100));
     }
 
-    private static Random random = new Random();
 
     public Tile(boolean top, boolean right, boolean down, boolean left) {
         routes.put(Route.TOP, top);
@@ -40,6 +32,7 @@ public class Tile {
             base = new Image("src/Resources/Base.png");
             track = new Image("src/Resources/Track.png");
             train = new Image("src/Resources/Train.png");
+            routeDecision = Route.DOWN;
         } catch(SlickException e) {
             e.printStackTrace();
         }
@@ -49,12 +42,12 @@ public class Tile {
 
     private HashMap<Route, Boolean> routes = new HashMap<Route, Boolean>();
     private Route trainFrom;
-    private Route routeDecision = Route.DOWN;
+    private Route routeDecision;
     private int progress = -1; //if progress is negative, the train hasn't arrived yet; otherwise a percentage
 
     public void setRouteDecision(Route decision) {
         if(progress >= 50) return;
-        if(routes.get(decision) && (decision != trainFrom)) {
+        if((decision != trainFrom)) {
             this.routeDecision = decision;
         }
     }
@@ -65,6 +58,10 @@ public class Tile {
         this.progress = 0;
         this.trainFrom = from;
     }
+
+    public Route getTrainFrom() { return trainFrom;}
+
+    public HashMap<Route, Boolean> getRoutes() {return routes;}
 
     public int getProgress() {
         if(progress < 0) return 0;
@@ -77,7 +74,7 @@ public class Tile {
             this.progress = newProgress;
     }
 
-    private boolean canRotate() { return (progress < 0); }
+    private boolean canRotate() { return progress<0; }
 
     public void rotate() {
         if(this.canRotate()) {
@@ -132,15 +129,15 @@ public class Tile {
                     train.setRotation(270);
                     train.draw(x*100+(100-progress),y*100+35);
                 }
-                if (routeDecision == Route.DOWN) {
+                else if (routeDecision == Route.DOWN) {
                     train.setRotation(180);
-                    train.draw(x*100+35,y*100+(progress));
+                    train.draw(x*100+35,y*100+(progress-30));
                 }
-                if (routeDecision == Route.RIGHT) {
+                else if (routeDecision == Route.RIGHT) {
                     train.setRotation(90);
-                    train.draw(x*100+(progress),y*100+35);
+                    train.draw(x*100+(progress-30),y*100+35);
                 }
-                if (routeDecision == Route.TOP) {
+                else if (routeDecision == Route.TOP) {
                     train.setRotation(0);
                     train.draw(x*100+35,y*100+(100-progress));
 

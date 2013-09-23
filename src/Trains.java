@@ -1,6 +1,7 @@
 import org.newdawn.slick.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +18,7 @@ public class Trains extends BasicGame {
             AppGameContainer appgc;
             appgc = new AppGameContainer(new Trains("Trains"));
             appgc.setDisplayMode(600, 500, false);
+            appgc.setTargetFrameRate(30);
             appgc.start();
         } catch(SlickException e) {
             Logger.getLogger(Trains.class.getName()).log(Level.SEVERE, null, e);
@@ -25,6 +27,7 @@ public class Trains extends BasicGame {
 
     Map map;
     GUI gui;
+    Boolean alive;
 
     public Trains(String title) {
         super(title);
@@ -34,12 +37,13 @@ public class Trains extends BasicGame {
     public void init(GameContainer container) throws SlickException {
         map = new Map(5);
         gui = new GUI(map);
+        alive = true;
         curx = 0;
         cury = 0;
         currentTile = map.getTile(curx, cury);
         currentTile.trainArrives(Tile.Route.TOP);
         currentTile.setRouteDecision(Tile.Route.RIGHT);
-        currentTile.setProgress(50);
+        currentTile.setProgress(51);
     }
 
     private Tile currentTile;
@@ -48,8 +52,14 @@ public class Trains extends BasicGame {
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException {
+        if (!currentTile.getRoutes().get(currentTile.getTrainFrom())) {
+            alive = false;
+        }
         currentTile.setProgress(currentTile.getProgress() + speed);
-        if(currentTile.getProgress() <= 99) { // go to next tile
+        if (currentTile.getProgress() == 50 && !currentTile.getRoutes().get(currentTile.getRouteDecision())) {
+            alive = false;
+        }
+        if(currentTile.getProgress() > 99) { // go to next tile
             Tile.Route route = currentTile.getRouteDecision();
             switch (route) {
                 case DOWN: cury++; break;
@@ -70,11 +80,13 @@ public class Trains extends BasicGame {
                     case LEFT: oppRoute = Tile.Route.RIGHT; break;
                 }
                 currentTile.trainArrives(oppRoute);
-                currentTile.setRouteDecision(oppRoute);
+                currentTile.setRouteDecision(route);
             } else {
-                // TODO - when the train goes off the edge, and they lose (or win maybe... what even is the objective?)
+                alive = false;
             }
-            Input input = container.getInput();
+        }
+        Input input = container.getInput();
+        if (currentTile.getProgress() < 50) {
             if (input.isKeyPressed(Input.KEY_W) || input.isKeyPressed(Input.KEY_UP)) {
                 currentTile.setRouteDecision(Tile.Route.TOP);
                 gui.setDirection(1);
@@ -92,11 +104,26 @@ public class Trains extends BasicGame {
                 gui.setDirection(4);
             }
         }
+        if (input.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
+            map.getTile(input.getMouseX()/100, input.getMouseY()/100).rotate();
+        }
+    }
+
+    private static Random random = new Random();
+
+    public static boolean balancer(int val) {
+        if (random.nextInt(val) > 60) return false;
+        else return true;
     }
 
     @Override
     public void render(GameContainer container, Graphics g) throws SlickException {
-        map.render(container, g);
-        gui.render(container, g);
+        if (alive) {
+            map.render(container, g);
+            gui.render(container, g);
+        }
+        else {
+            g.drawString("What a loser", 200, 240);
+        }
     }
 }

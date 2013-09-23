@@ -21,6 +21,7 @@ public class Map {
             tiles[i] = new Tile();
         }
         tiles[0] = new Tile(true, true, true, true);
+        tiles[1] = new Tile(true, true, true, true);
     }
 
     public boolean coordsInBounds(int x, int y) {
