@@ -107,13 +107,13 @@ public class Trains extends BasicGame {
         if (input.isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
             map.getTile(input.getMouseX()/100, input.getMouseY()/100).rotate();
         }
+        //TODO rotate left or right w. mouse buttons
     }
 
     private static Random random = new Random();
 
     public static boolean balancer(int val) {
-        if (random.nextInt(val) > 60) return false;
-        else return true;
+        return !(random.nextInt(val) > 60);
     }
 
     @Override

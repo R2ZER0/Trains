@@ -4,7 +4,6 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 import java.util.HashMap;
-import java.util.Random;
 
 /**
  * Created with IntelliJ IDEA.
@@ -85,8 +84,8 @@ public class Tile {
             routes.put(Route.TOP, newTop);
         }
     }
+    //TODO reset progress after train leaves to allow rotation
 
-    // TODO a public render method
     public void render(GameContainer container, Graphics g, int x, int y) throws SlickException {
         if(base != null) base.draw(x*100,y*100);
         if (routes.get(Route.TOP)) {
@@ -143,6 +142,7 @@ public class Tile {
 
                 }
             }
+            //TODO new train class to stop train rendering under tiles
 
         }
     }
