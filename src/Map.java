@@ -17,11 +17,13 @@ public class Map {
     public Map(int sideSize) {
         this.sideSize = sideSize;
         this.tiles = new Tile[sideSize*sideSize];
-        for (int i = 0; i < sideSize*sideSize; i++) {
-            tiles[i] = new Tile();
+        for(int y = 0; y < sideSize; ++y) {
+            for(int x = 0; x < sideSize; ++x) {
+                tiles[y*sideSize + x] = new Tile(x,y);
+            }
         }
-        tiles[0] = new Tile(true, true, true, true);
-        tiles[1] = new Tile(true, true, true, true);
+        tiles[0] = new Tile(0, 0, true, true, true, true);
+        tiles[1] = new Tile(0, 1, true, true, true, true);
     }
 
     public boolean coordsInBounds(int x, int y) {
