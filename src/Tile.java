@@ -16,17 +16,13 @@ public class Tile {
     private Image base;
     private Image track;
     private Image train;
-    private int x;
-    private int y;
 
-    public Tile(int x, int y) {
-        this(x, y, Trains.balancer(100), Trains.balancer(100), Trains.balancer(100), Trains.balancer(100));
+    public Tile() {
+        this(Trains.balancer(100), Trains.balancer(100), Trains.balancer(100), Trains.balancer(100));
     }
 
 
-    public Tile(int x, int y, boolean top, boolean right, boolean down, boolean left) {
-        this.x = x;
-        this.y = y;
+    public Tile(boolean top, boolean right, boolean down, boolean left) {
         routes.put(Route.TOP, top);
         routes.put(Route.RIGHT, right);
         routes.put(Route.DOWN, down);
@@ -54,9 +50,6 @@ public class Tile {
             this.routeDecision = decision;
         }
     }
-
-    public int getX() {return x;}
-    public int getY() {return y;}
 
     public Route getRouteDecision() {return this.routeDecision;}
 
