@@ -22,8 +22,8 @@ public class Tile {
     }
 
 
-    public Tile(boolean top, boolean right, boolean down, boolean left) {
-        routes.put(Route.TOP, top);
+    public Tile(boolean up, boolean right, boolean down, boolean left) {
+        routes.put(Route.UP, up);
         routes.put(Route.RIGHT, right);
         routes.put(Route.DOWN, down);
         routes.put(Route.LEFT, left);
@@ -37,7 +37,7 @@ public class Tile {
         }
     }
 
-    enum Route { TOP, RIGHT, DOWN, LEFT }
+    enum Route { UP, RIGHT, DOWN, LEFT }
 
     private HashMap<Route, Boolean> routes = new HashMap<Route, Boolean>();
     private Route trainFrom;
@@ -80,8 +80,8 @@ public class Tile {
             Boolean newTop = routes.get(Route.LEFT);
             routes.put(Route.LEFT, routes.get(Route.DOWN));
             routes.put(Route.DOWN, routes.get(Route.RIGHT));
-            routes.put(Route.RIGHT, routes.get(Route.TOP));
-            routes.put(Route.TOP, newTop);
+            routes.put(Route.RIGHT, routes.get(Route.UP));
+            routes.put(Route.UP, newTop);
         }
     }
 
@@ -90,14 +90,14 @@ public class Tile {
             Boolean newTop = routes.get(Route.RIGHT);
             routes.put(Route.RIGHT, routes.get(Route.DOWN));
             routes.put(Route.DOWN, routes.get(Route.LEFT));
-            routes.put(Route.LEFT, routes.get(Route.TOP));
-            routes.put(Route.TOP, newTop);
+            routes.put(Route.LEFT, routes.get(Route.UP));
+            routes.put(Route.UP, newTop);
         }
     }
 
-    public void render(GameContainer container, Graphics g, int x, int y) throws SlickException {
+    public int render(GameContainer container, Graphics g, int x, int y) throws SlickException {
         if(base != null) base.draw(x*100,y*100);
-        if (routes.get(Route.TOP)) {
+        if (routes.get(Route.UP)) {
             track.setRotation(0);
             track.draw(x*100+45,y*100);
         }
@@ -113,47 +113,48 @@ public class Tile {
             track.setRotation(90);
             track.draw(x*100+18,y*100+27);
         }
+        if (progress > 0) return ((x*10) + y);
+        else return 0;
+    }
+
+    public void trainRender(GameContainer container, Graphics g, int x, int y) throws SlickException {
         if (progress > 0) {
             if (progress < 50) {
-                if (trainFrom == Route.TOP) {
+                if (trainFrom == Route.UP) {
                     train.setRotation(180);
-                    train.draw(x*100+35,y*100+(progress-30));
+                    train.draw(x*100+35,y*100+(progress-15));
                 }
                 else if (trainFrom == Route.RIGHT) {
                     train.setRotation(270);
-                    train.draw(x*100+(100-progress),y*100+35);
+                    train.draw(x*100+(115-progress),y*100+35);
                 }
                 else if (trainFrom == Route.DOWN) {
                     train.setRotation(0);
-                    train.draw(x*100+35,y*100+(100-progress));
+                    train.draw(x*100+35,y*100+(115-progress));
                 }
                 else if (trainFrom == Route.LEFT) {
                     train.setRotation(90);
-                    train.draw(x*100+(progress-30),y*100+35);
+                    train.draw(x*100+(progress-15),y*100+35);
                 }
             }
             else if (progress <= 99) {
-                if (routeDecision == Route.LEFT) {
-                    train.setRotation(270);
-                    train.draw(x*100+(100-progress),y*100+35);
-                }
-                else if (routeDecision == Route.DOWN) {
-                    train.setRotation(180);
-                    train.draw(x*100+35,y*100+(progress-30));
+                if (routeDecision == Route.UP) {
+                    train.setRotation(0);
+                    train.draw(x*100+35,y*100+(115-progress));
                 }
                 else if (routeDecision == Route.RIGHT) {
                     train.setRotation(90);
-                    train.draw(x*100+(progress-30),y*100+35);
+                    train.draw(x*100+(progress-15),y*100+35);
                 }
-                else if (routeDecision == Route.TOP) {
-                    train.setRotation(0);
-                    train.draw(x*100+35,y*100+(100-progress));
-
+                else if (routeDecision == Route.DOWN) {
+                    train.setRotation(180);
+                    train.draw(x*100+35,y*100+(progress-15));
+                }
+                else if (routeDecision == Route.LEFT) {
+                    train.setRotation(270);
+                    train.draw(x*100+(115-progress),y*100+35);
                 }
             }
-            //TODO new train class to stop train rendering under tiles
-
         }
     }
-
 }

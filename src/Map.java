@@ -40,10 +40,13 @@ public class Map {
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException {
-         for(int y = 0; y < sideSize; ++y) {
+        int t= 0;
+        for(int y = 0; y < sideSize; ++y) {
              for(int x = 0; x < sideSize; ++x) {
-                 this.getTile(x, y).render(container, g, x, y);
+                 int tt = this.getTile(x, y).render(container, g, x, y);
+                 if (tt > 0) t = tt;
              }
-         }
+        }
+        this.getTile(t/10, t%10).trainRender(container, g, t/10, t%10);
     }
 }

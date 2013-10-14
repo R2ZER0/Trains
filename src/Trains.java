@@ -41,7 +41,7 @@ public class Trains extends BasicGame {
         curx = 0;
         cury = 0;
         currentTile = map.getTile(curx, cury);
-        currentTile.trainArrives(Tile.Route.TOP);
+        currentTile.trainArrives(Tile.Route.UP);
         currentTile.setRouteDecision(Tile.Route.RIGHT);
         currentTile.setProgress(51);
     }
@@ -65,7 +65,7 @@ public class Trains extends BasicGame {
             Tile.Route route = currentTile.getRouteDecision();
             switch (route) {
                 case DOWN: cury++; break;
-                case TOP: cury--;  break;
+                case UP: cury--;  break;
                 case RIGHT: curx++; break;
                 case LEFT: curx--; break;
             }
@@ -74,10 +74,10 @@ public class Trains extends BasicGame {
             if(map.coordsInBounds(curx, cury)) {
                 // when they get to a new tile
                 currentTile = map.getTile(curx, cury);
-                Tile.Route oppRoute = Tile.Route.TOP;
+                Tile.Route oppRoute = Tile.Route.UP;
                 switch (route) {
-                    case DOWN: oppRoute = Tile.Route.TOP; break;
-                    case TOP: oppRoute = Tile.Route.DOWN; break;
+                    case DOWN: oppRoute = Tile.Route.UP; break;
+                    case UP: oppRoute = Tile.Route.DOWN; break;
                     case RIGHT: oppRoute = Tile.Route.LEFT; break;
                     case LEFT: oppRoute = Tile.Route.RIGHT; break;
                 }
@@ -90,7 +90,7 @@ public class Trains extends BasicGame {
         Input input = container.getInput();
         if (currentTile.getProgress() < 50) {
             if (input.isKeyPressed(Input.KEY_W) || input.isKeyPressed(Input.KEY_UP)) {
-                currentTile.setRouteDecision(Tile.Route.TOP);
+                currentTile.setRouteDecision(Tile.Route.UP);
                 gui.setDirection(1);
             }
             else if (input.isKeyPressed(Input.KEY_D) || input.isKeyPressed(Input.KEY_RIGHT)) {
